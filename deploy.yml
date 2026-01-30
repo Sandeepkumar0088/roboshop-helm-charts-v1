@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Values.appName  }}
+  labels:
+    project: {{ .Values.projectName  }}
+    app: {{ .Values.appName  }}
+spec:
+  replicas: {{ .Values.replicas  }}
+  selector:
+    matchLabels:
+      project: {{ .Values.projectName  }}
+      app: {{ .Values.appName  }}
+  template:
+    metadata:
+      labels:
+        project: {{ .Values.projectName  }}
+        app: {{ .Values.appName  }}
+    spec:
+      containers:
+        - name: {{ .Values.appName  }}
+          image: public.ecr.aws/w8x4g9h7/{{ .Values.projectName  }}-v3/{{ .Values.appName  }}
+          envFrom:
+            - configMapRef:
+                name: {{ .Values.appName  }}
