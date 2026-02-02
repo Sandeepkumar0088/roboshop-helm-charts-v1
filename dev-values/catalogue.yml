@@ -6,3 +6,8 @@ configMapData:
   APP_GIT_URL : "https://github.com/roboshop-devops-project-v3/catalogue"
   DB_HOST     : "mongodb-dev.sandeepkumar0088.online"
   SCHEMA_FILE : "db/master-data.js"
+job:
+  enabled: true
+  containers:
+    - name: master-data
+      db_file: db/master-data.js
