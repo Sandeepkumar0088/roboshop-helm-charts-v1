@@ -8,5 +8,5 @@ spec:
     project: {{ .Values.projectName  }}
     app: {{ .Values.appName  }}
   ports:
-    - port: {{  .Value.appPort  }}
+    - port: {{  .Values.appPort  }}
       targetPort: {{  .Values.appPort  }}
