@@ -1,0 +1,22 @@
+  {{  if .Values.cm3.enabled | default false  }}
+apiVersion: v1
+kind: configMap
+metadata:
+  name: game-demo-2
+data: |
+  {{  (.Files.Glob  "files/sample.conf")AsConfig  | indent 4  }}
+  {{ end }}
+
+---
+
+apiVersion: v1
+kind: configMap
+metadata:
+  name: game-demo-2
+  labels:
+    {{- if .Values.cm3.enabled | default false  }}
+  some: some
+    {{- end  }}
+  old: old
+data: |
+  {{  (.Files.Glob  "files/sample.conf")AsConfig  | indent 4  }}
