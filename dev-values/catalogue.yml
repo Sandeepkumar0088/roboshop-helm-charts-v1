@@ -1,4 +1,4 @@
-appName: catalogue
+appName: "catalogue"
 configMapData:
   MONGO       : "true"
   MONGO_URL   : "mongodb://mongodb-dev.sandeepkumar0088.online:27017/catalogue"

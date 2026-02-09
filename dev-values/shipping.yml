@@ -1,4 +1,4 @@
-appName: shipping
+appName: "shipping"
 configMapData:
   CART_ENDPOINT: "cart:8080"
   DB_HOST: "mysql-dev.sandeepkumar0088.online"

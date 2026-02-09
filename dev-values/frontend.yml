@@ -1,5 +1,5 @@
-appName: frontend
-serviceType: LoadBalancer
+appName: "frontend"
+serviceType: "LoadBalancer"
 appPort: "80"
 configMapData:
   CATALOGUE_HOST : "catalogue"

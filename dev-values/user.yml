@@ -1,4 +1,4 @@
-appName: user
+appName: "user"
 configMapData:
   MONGO     : "true"
   REDIS_URL : "redis://redis-dev.sandeepkumar0088.online:6379"
