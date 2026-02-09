@@ -10,8 +10,8 @@ job:
   enabled: true
   containers:
     - name: app-user
-      db_file: db/app-user.sql
+      file_name: db/app-user.sql
     - name: schema
       db_file: db/schema.sql
     - name: master-data
-      db_file: db/master-data.sql
+      file_name: db/master-data.sql

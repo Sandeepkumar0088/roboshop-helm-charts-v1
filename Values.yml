@@ -1,6 +1,4 @@
-projectName: roboshop
-appPort: "8080"
-serviceType: ClusterIp
+projectName: "roboshop"
 replicas: "1"
-
-enabled: true
+job:
+  enabled: "true"
