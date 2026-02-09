@@ -1,26 +1,161 @@
+#apiVersion: apps/v1
+#kind: Deployment
+#metadata:
+#  name: {{ .Values.appName  }}
+#  labels:
+#    project: {{ .Values.projectName  }}
+#    app: {{ .Values.appName  }}
+#spec:
+#  replicas: {{ .Values.replicas  }}
+#  selector:
+#    matchLabels:
+#      project: {{ .Values.projectName  }}
+#      app: {{ .Values.appName  }}
+#  template:
+#    metadata:
+#      labels:
+#        project: {{ .Values.projectName  }}
+#        app: {{ .Values.appName  }}
+#    spec:
+#      containers:
+#        - name: {{ .Values.appName  }}
+#          image: 389841108590.dkr.ecr.us-east-1.amazonaws.com/{{ .Values.appName  }}:latest
+#          imagePullPolicy: Always
+#          envFrom:
+#            - configMapRef:
+#                name: {{ .Values.appName  }}
+
+
+
+
+
+
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ .Values.appName  }}
+  name: catalogue
   labels:
-    project: {{ .Values.projectName  }}
-    app: {{ .Values.appName  }}
+    project: roboshop
+    app: catalogue
 spec:
-  replicas: {{ .Values.replicas  }}
+  replicas: 1
   selector:
     matchLabels:
-      project: {{ .Values.projectName  }}
-      app: {{ .Values.appName  }}
+      project: roboshop
+      app: catalogue
   template:
     metadata:
       labels:
-        project: {{ .Values.projectName  }}
-        app: {{ .Values.appName  }}
+        project: roboshop
+        app: catalogue
     spec:
       containers:
-        - name: {{ .Values.appName  }}
-          image: 389841108590.dkr.ecr.us-east-1.amazonaws.com/{{ .Values.appName  }}:latest
-          imagePullPolicy: Always
+        - name: catalogue
+          image: public.ecr.aws/w8x4g9h7/roboshop-v3/catalogue
           envFrom:
             - configMapRef:
-                name: {{ .Values.appName  }}
+                name: catalogue
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cart
+  labels:
+    project: roboshop
+    app: cart
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      project: roboshop
+      app: cart
+  template:
+    metadata:
+      labels:
+        project: roboshop
+        app: cart
+    spec:
+      containers:
+        - name: cart
+          image: public.ecr.aws/w8x4g9h7/roboshop-v3/cart
+          envFrom:
+            - configMapRef:
+                name: cart
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: user
+  labels:
+    project: roboshop
+    app: user
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      project: roboshop
+      app: user
+  template:
+    metadata:
+      labels:
+        project: roboshop
+        app: user
+    spec:
+      containers:
+        - name: user
+          image: public.ecr.aws/w8x4g9h7/roboshop-v3/user
+          envFrom:
+            - configMapRef:
+                name: user
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shipping
+  labels:
+    project: roboshop
+    app: shipping
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      project: roboshop
+      app: shipping
+  template:
+    metadata:
+      labels:
+        project: roboshop
+        app: shipping
+    spec:
+      containers:
+        - name: shipping
+          image: public.ecr.aws/w8x4g9h7/roboshop-v3/shipping
+          envFrom:
+            - configMapRef:
+                name: shipping
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: payment
+  labels:
+    project: roboshop
+    app: payment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      project: roboshop
+      app: payment
+  template:
+    metadata:
+      labels:
+        project: roboshop
+        app: payment
+    spec:
+      containers:
+        - name: payment
+          image: public.ecr.aws/w8x4g9h7/roboshop-v3/payment
+          envFrom:
+            - configMapRef:
+                name: payment
