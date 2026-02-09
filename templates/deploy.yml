@@ -19,7 +19,8 @@ spec:
     spec:
       containers:
         - name: {{ .Values.appName  }}
-          image: public.ecr.aws/w8x4g9h7/{{ .Values.projectName  }}-v3/{{ .Values.appName  }}
+          image: 389841108590.dkr.ecr.us-east-1.amazonaws.com/{{ .Values.appName  }}:latest
+          imagePullPolicy: Always
           envFrom:
             - configMapRef:
                 name: {{ .Values.appName  }}
