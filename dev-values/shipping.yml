@@ -6,3 +6,12 @@ configMapData:
   DB_PASS: "RoboShop@1"
   DB_TYPE: "mysql"
   APP_GIT_URL: "https://github.com/roboshop-devops-project-v3/shipping"
+job:
+  enabled: true
+  containers:
+    - name: app-user
+      file_name: db/app-user.sql
+    - name: master-data
+      file_name: db/master-data.sql
+    - name: schema
+      file_name: db/schema.sql

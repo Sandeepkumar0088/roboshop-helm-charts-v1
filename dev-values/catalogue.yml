@@ -7,3 +7,8 @@ configMapData:
   DB_HOST     : "mongodb-dev.sandeepkumar0088.online"
   SCHEMA_FILE : "db/master-data.js"
 
+job:
+  enabled: true
+  containers:
+    - name: master-data
+      file_name: db/master-data.js
