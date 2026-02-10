@@ -1,2 +1,7 @@
 projectName: "roboshop"
 replicas: "1"
+appPort: "8080"
+serviceType: ClusterIP
+
+job:
+  enabled: false
