@@ -6,7 +6,8 @@ metadata:
 spec:
   template:
     spec:
-      containers:{{- range .Values.job.containers }}
+      containers:
+      {{- range .Values.job.containers }}
       - name: {{ .name }}
         image: public.ecr.aws/w8x4g9h7/{{ .Values.projectName  }}-v3/schema-load
         env:
