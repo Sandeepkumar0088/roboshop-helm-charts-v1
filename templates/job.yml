@@ -1,4 +1,4 @@
-  {{ if .Values.job.enabled | default false }}
+{{ if .Values.job.enabled | default false }}
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -9,7 +9,7 @@ spec:
       containers:
       {{- range .Values.job.containers }}
       - name: {{ .name }}
-        image: public.ecr.aws/w8x4g9h7/{{ .Values.projectName  }}-v3/schema-load
+        image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
         env:
           - name: SCHEMA_FILE
             value: {{ .file_name }}
@@ -19,5 +19,4 @@ spec:
       {{- end }}
       restartPolicy: Never
     backoffLimit: 0
-      {{  end  }}
-
+{{  end  }}
