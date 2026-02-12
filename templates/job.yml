@@ -1,143 +1,143 @@
-apiVersion: batch/v1
-kind: Job
-metadata:
-  name: catalogue-schema
-spec:
-  backoffLimit: 0
-  template:
-    spec:
-      containers:
-        - name: schema
-          image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
-          env:
-            - name: SCHEMA_FILE
-              value: db/master-data.js
-          envFrom:
-            - configMapRef:
-                name: catalogue
-      restartPolicy: Never
----
-apiVersion: batch/v1
-kind: Job
-metadata:
-  name: shipping-app-user
-spec:
-  backoffLimit: 0
-  template:
-    spec:
-      containers:
-        - name: app-user
-          image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
-          env:
-            - name: SCHEMA_FILE
-              value: db/app-user.sql
-          envFrom:
-            - configMapRef:
-                name: shipping
-      restartPolicy: Never
----
-apiVersion: batch/v1
-kind: Job
-metadata:
-  name: shipping-master-data
-spec:
-  backoffLimit: 0
-  template:
-    spec:
-      containers:
-        - name: master-data
-          image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
-          env:
-            - name: SCHEMA_FILE
-              value: db/master-data.sql
-          envFrom:
-            - configMapRef:
-                name: shipping
-      restartPolicy: Never
----
-apiVersion: batch/v1
-kind: Job
-metadata:
-  name: shipping-schema
-spec:
-  backoffLimit: 0
-  template:
-    spec:
-      containers:
-        - name: schema
-          image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
-          env:
-            - name: SCHEMA_FILE
-              value: db/schema.sql
-          envFrom:
-            - configMapRef:
-                name: shipping
-      restartPolicy: Never
-
-
-
-
-
-
-
-
-#{{- if .Values.job.enabled | default false }}
 #apiVersion: batch/v1
 #kind: Job
 #metadata:
-#  name: {{ .Values.appName }}-schema
+#  name: catalogue-schema
 #spec:
 #  backoffLimit: 0
 #  template:
 #    spec:
 #      containers:
-#        {{- range .Values.job.containers }}
-#    - name: {{ .name }}
-#  image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
-#  env:
-#    - name: SCHEMA_FILE
-#      value: {{ .file_name }}
-#  envFrom:
-#    - configMapRef:
-#        name: {{ $.Values.appName }}
-#          {{- end }}
-#restartPolicy: Never
-#  {{- end }}
-
-
-
-
-
-
-
-
-
-
-
-
-#if: {{  .Values.job.enabled | default false }}
-#apiVersion: batch/v1
-#kind: Job
-#metadata:
-#  name: {{ .Values.appName }}-schema
-#spec:
-#  backoffLimit: 0
-#  template:
-#    spec:
-#      containers:
-#      {{- range .Values.job.containers }}
-#      - name: {{ .name }}
-#        image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
-#        env:
-#          - name: SCHEMA_FILE
-#            value: {{ .file_name }}
-#        envFrom:
-#          - configMapRef:
-#              name: {{ $.Values.appName }}
-#      {{- end }}
+#        - name: schema
+#          image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
+#          env:
+#            - name: SCHEMA_FILE
+#              value: db/master-data.js
+#          envFrom:
+#            - configMapRef:
+#                name: catalogue
 #      restartPolicy: Never
-#      {{ end }}
-
-
-
-
+#---
+#apiVersion: batch/v1
+#kind: Job
+#metadata:
+#  name: shipping-app-user
+#spec:
+#  backoffLimit: 0
+#  template:
+#    spec:
+#      containers:
+#        - name: app-user
+#          image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
+#          env:
+#            - name: SCHEMA_FILE
+#              value: db/app-user.sql
+#          envFrom:
+#            - configMapRef:
+#                name: shipping
+#      restartPolicy: Never
+#---
+#apiVersion: batch/v1
+#kind: Job
+#metadata:
+#  name: shipping-master-data
+#spec:
+#  backoffLimit: 0
+#  template:
+#    spec:
+#      containers:
+#        - name: master-data
+#          image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
+#          env:
+#            - name: SCHEMA_FILE
+#              value: db/master-data.sql
+#          envFrom:
+#            - configMapRef:
+#                name: shipping
+#      restartPolicy: Never
+#---
+#apiVersion: batch/v1
+#kind: Job
+#metadata:
+#  name: shipping-schema
+#spec:
+#  backoffLimit: 0
+#  template:
+#    spec:
+#      containers:
+#        - name: schema
+#          image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
+#          env:
+#            - name: SCHEMA_FILE
+#              value: db/schema.sql
+#          envFrom:
+#            - configMapRef:
+#                name: shipping
+#      restartPolicy: Never
+#
+#
+#
+#
+#
+#
+#
+#
+##{{- if .Values.job.enabled | default false }}
+##apiVersion: batch/v1
+##kind: Job
+##metadata:
+##  name: {{ .Values.appName }}-schema
+##spec:
+##  backoffLimit: 0
+##  template:
+##    spec:
+##      containers:
+##        {{- range .Values.job.containers }}
+##    - name: {{ .name }}
+##  image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
+##  env:
+##    - name: SCHEMA_FILE
+##      value: {{ .file_name }}
+##  envFrom:
+##    - configMapRef:
+##        name: {{ $.Values.appName }}
+##          {{- end }}
+##restartPolicy: Never
+##  {{- end }}
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+#
+##if: {{  .Values.job.enabled | default false }}
+##apiVersion: batch/v1
+##kind: Job
+##metadata:
+##  name: {{ .Values.appName }}-schema
+##spec:
+##  backoffLimit: 0
+##  template:
+##    spec:
+##      containers:
+##      {{- range .Values.job.containers }}
+##      - name: {{ .name }}
+##        image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
+##        env:
+##          - name: SCHEMA_FILE
+##            value: {{ .file_name }}
+##        envFrom:
+##          - configMapRef:
+##              name: {{ $.Values.appName }}
+##      {{- end }}
+##      restartPolicy: Never
+##      {{ end }}
+#
+#
+#
+#
