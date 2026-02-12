@@ -1,0 +1,106 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: shipping
+data:
+  CART_ENDPOINT: "cart:8080"
+  DB_HOST: "mysql-dev.sandeepkumar0088.online"
+  DB_USER: "root"
+  DB_PASS: "RoboShop@1"
+  DB_TYPE: "mysql"
+  APP_GIT_URL: "https://github.com/roboshop-devops-project-v3/shipping"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: shipping
+spec:
+  selector:
+    project: roboshop
+    app: shipping
+  ports:
+    - port: 8080
+      targetPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: shipping
+  labels:
+    project: roboshop
+    app: shipping
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      project: roboshop
+      app: shipping
+  template:
+    metadata:
+      labels:
+        project: roboshop
+        app: shipping
+    spec:
+      containers:
+        - name: shipping
+          image: public.ecr.aws/w8x4g9h7/roboshop-v3/shipping
+          envFrom:
+            - configMapRef:
+                name: shipping
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: shipping-app-user
+spec:
+  backoffLimit: 0
+  template:
+    spec:
+      containers:
+        - name: app-user
+          image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
+          env:
+            - name: SCHEMA_FILE
+              value: db/app-user.sql
+          envFrom:
+            - configMapRef:
+                name: shipping
+      restartPolicy: Never
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: shipping-master-data
+spec:
+  backoffLimit: 0
+  template:
+    spec:
+      containers:
+        - name: master-data
+          image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
+          env:
+            - name: SCHEMA_FILE
+              value: db/master-data.sql
+          envFrom:
+            - configMapRef:
+                name: shipping
+      restartPolicy: Never
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: shipping-schema
+spec:
+  backoffLimit: 0
+  template:
+    spec:
+      containers:
+        - name: schema
+          image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
+          env:
+            - name: SCHEMA_FILE
+              value: db/schema.sql
+          envFrom:
+            - configMapRef:
+                name: shipping
+      restartPolicy: Never
