@@ -48,7 +48,7 @@ spec:
     spec:
       containers:
         - name: frontend
-          image: public.ecr.aws/w8x4g9h7/roboshop-v3/frontend
+          image: 389841108590.dkr.ecr.us-east-1.amazonaws.com/frontend:latest
           envFrom:
             - configMapRef:
                 name: frontend

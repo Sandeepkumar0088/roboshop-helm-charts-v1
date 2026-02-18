@@ -44,7 +44,7 @@ spec:
     spec:
       containers:
         - name: payment
-          image: public.ecr.aws/w8x4g9h7/roboshop-v3/payment
+          image: 389841108590.dkr.ecr.us-east-1.amazonaws.com/payment:latest
           envFrom:
             - configMapRef:
                 name: payment

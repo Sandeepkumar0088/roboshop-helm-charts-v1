@@ -43,7 +43,7 @@ spec:
     spec:
       containers:
         - name: shipping
-          image: public.ecr.aws/w8x4g9h7/roboshop-v3/shipping
+          image: 389841108590.dkr.ecr.us-east-1.amazonaws.com/shipping:latest
           envFrom:
             - configMapRef:
                 name: shipping
