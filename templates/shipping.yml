@@ -44,6 +44,7 @@ spec:
       containers:
         - name: shipping
           image: 389841108590.dkr.ecr.us-east-1.amazonaws.com/shipping:latest
+          imagePullPolicy: Always
           envFrom:
             - configMapRef:
                 name: shipping
