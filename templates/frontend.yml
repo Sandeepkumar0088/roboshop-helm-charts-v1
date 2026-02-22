@@ -26,6 +26,10 @@ spec:
   ports:
     - port: 80
       targetPort: 80
+      name: default
+    - port: 9113
+      targetPort: 9113
+      name: metrics
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -47,9 +51,20 @@ spec:
         app: frontend
     spec:
       containers:
+        - args:
+            - -nginx.scrape-uri=http://127.0.0.1/health
+          image: nginx/nginx-prometheus-exporter:latest
+          name: exporter
+          ports:
+            - containerPort: 9113
+              name: metrics
+
         - name: frontend
           image: 389841108590.dkr.ecr.us-east-1.amazonaws.com/frontend:latest
           imagePullPolicy: Always
+          ports:
+            - containerPort: 9113
+              name: default
           envFrom:
             - configMapRef:
                 name: frontend
