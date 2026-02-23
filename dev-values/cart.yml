@@ -1,5 +1,0 @@
-appName: "cart"
-configMapData:
-  REDIS_HOST     : "redis-dev.sandeepkumar0088.online"
-  CATALOGUE_HOST : "catalogue"
-  CATALOGUE_PORT : "8080"
