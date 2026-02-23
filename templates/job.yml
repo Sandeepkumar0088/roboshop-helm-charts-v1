@@ -1,22 +1,52 @@
-  {{ if .values.job.enabled | default }}
+#  {{  if .Values.job.enabled  }}
+#apiVersion: batch/v1
+#kind: Job
+#metadata:
+#  name: {{  .Values.appName  }}-schema
+#spec:
+#  backoffLimit: 0
+#  template:
+#    spec:
+#      containers:
+#      {{-  range .Values.job.containers  }}
+#      - name: {{  .name  }}
+#        image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
+#        env:
+#          - name: SCHEMA_FILE
+#            value: {{  $.file_name  }}
+#        envFrom:
+#        - configMapRef:
+#            name: {{  .Values.appName  }}
+#      {{-  end  }}
+#      restartPolicy: Never
+#      {{  end  }}
+#
+#
+#
+#
+#
+#
+#
+
+  {{ if .Values.job.enabled | default false }}
 apiVersion: batch/v1
 kind: Job
 metadata:
-  name: {{  .Values.appName  }}-schema
+  name: {{ .Values.appName }}-schema
 spec:
-  backoffLimit: 0
   template:
     spec:
       containers:
-      {{- range .Values.job.containers  }}
-      - name: {{ .name  }}
-        image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
-        env:
-          - name: SCHEMA_FILE
-            value: {{ $.file_name  }}
-        envFrom:
-        - configMapRef:
-            name: {{  .Values.appName  }}
-      {{- end }}
+      {{- range .Values.job.containers }}
+        - name: {{ .name }}
+          image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
+          env:
+            - name: SCHEMA_FILE
+              value: {{ .file_name }}
+          envFrom:
+            - configMapRef:
+                name: {{ $.Values.appName }}
+        {{- end }}
       restartPolicy: Never
-      {{ end }}
+  backoffLimit: 0
+    {{ end }}
