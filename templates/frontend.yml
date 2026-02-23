@@ -19,7 +19,7 @@ kind: Service
 metadata:
   name: frontend
 spec:
-  type: LoadBalancer
+#  type: LoadBalancer
   selector:
     project: roboshop
     app: frontend
@@ -68,3 +68,21 @@ spec:
           envFrom:
             - configMapRef:
                 name: frontend
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: frontend
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: "frontend-dev.sandeepkumar0088.online"
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: frontend
+                port:
+                  number: 80
