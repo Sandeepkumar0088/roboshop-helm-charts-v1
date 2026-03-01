@@ -51,6 +51,60 @@ spec:
             - configMapRef:
                 name: shipping
 ---
+#apiVersion: batch/v1
+#kind: Job
+#metadata:
+#  name: shipping-schema
+#spec:
+#  backoffLimit: 0
+#  template:
+#    spec:
+#      containers:
+#        - name: shipping-schema
+#          image: 389841108590.dkr.ecr.us-east-1.amazonaws.com/shipping-db-image
+#          imagePullPolicy: Always
+#          envFrom:
+#            - configMapRef:
+#                name: shipping
+#      restartPolicy: Never
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: shipping-app-user
+spec:
+  backoffLimit: 0
+  template:
+    spec:
+      containers:
+        - name: app-user
+          image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
+          env:
+            - name: SCHEMA_FILE
+              value: db/app-user.sql
+          envFrom:
+            - configMapRef:
+                name: shipping
+      restartPolicy: Never
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: shipping-master-data
+spec:
+  backoffLimit: 0
+  template:
+    spec:
+      containers:
+        - name: master-data
+          image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
+          env:
+            - name: SCHEMA_FILE
+              value: db/master-data.sql
+          envFrom:
+            - configMapRef:
+                name: shipping
+      restartPolicy: Never
+---
 apiVersion: batch/v1
 kind: Job
 metadata:
@@ -60,9 +114,11 @@ spec:
   template:
     spec:
       containers:
-        - name: shipping-schema
-          image: 389841108590.dkr.ecr.us-east-1.amazonaws.com/shipping-db-image
-          imagePullPolicy: Always
+        - name: schema
+          image: public.ecr.aws/w8x4g9h7/roboshop-v3/schema-load
+          env:
+            - name: SCHEMA_FILE
+              value: db/schema.sql
           envFrom:
             - configMapRef:
                 name: shipping
