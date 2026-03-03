@@ -46,6 +46,13 @@ spec:
         - name: catalogue
           image: 389841108590.dkr.ecr.us-east-1.amazonaws.com/catalogue:latest
           imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: "100m"
+              memory: "128Mi"
+            requests:
+              cpu: "200m"
+              memory: "256Mi"
           envFrom:
             - configMapRef:
                 name: catalogue

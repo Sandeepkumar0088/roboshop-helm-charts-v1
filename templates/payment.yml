@@ -46,6 +46,14 @@ spec:
         - name: payment
           image: 389841108590.dkr.ecr.us-east-1.amazonaws.com/payment:latest
           imagePullPolicy: Always
+          resources:
+            limits:
+              cpu: "200m"
+              memory: "512Mi"
+            requests:
+              cpu: "400m"
+              memory: "1024Mi"
+
           envFrom:
             - configMapRef:
                 name: payment
