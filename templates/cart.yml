@@ -47,8 +47,8 @@ spec:
               cpu: "100m"
               memory: "128Mi"
             requests:
-              cpu: "200m"
-              memory: "256Mi"
+              cpu: "100m"
+              memory: "128Mi"
           envFrom:
             - configMapRef:
                 name: cart
