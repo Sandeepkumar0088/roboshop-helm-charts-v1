@@ -42,13 +42,13 @@ spec:
         - name: cart
           image: 389841108590.dkr.ecr.us-east-1.amazonaws.com/cart:latest
           imagePullPolicy: Always
-          resources:
-            limits:
-              cpu: "100m"
-              memory: "128Mi"
-            requests:
-              cpu: "100m"
-              memory: "128Mi"
+#          resources:
+#            limits:
+#              cpu: "100m"
+#              memory: "128Mi"
+#            requests:
+#              cpu: "100m"
+#              memory: "128Mi"
           envFrom:
             - configMapRef:
                 name: cart

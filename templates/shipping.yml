@@ -47,13 +47,13 @@ spec:
         - name: shipping
           image: 389841108590.dkr.ecr.us-east-1.amazonaws.com/shipping:latest
           imagePullPolicy: Always
-          resources:
-            limits:
-              cpu: "1000m"
-              memory: "1024Mi"
-            requests:
-              cpu: "1000m"
-              memory: "1024Mi"
+#          resources:
+#            limits:
+#              cpu: "1000m"
+#              memory: "1024Mi"
+#            requests:
+#              cpu: "1000m"
+#              memory: "1024Mi"
           envFrom:
             - configMapRef:
                 name: shipping

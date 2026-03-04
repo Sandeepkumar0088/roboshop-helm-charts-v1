@@ -62,13 +62,13 @@ spec:
         - name: frontend
           image: 389841108590.dkr.ecr.us-east-1.amazonaws.com/frontend:latest
           imagePullPolicy: Always
-          resources:
-            limits:
-              cpu: "100m"
-              memory: "128Mi"
-            requests:
-              cpu: "100m"
-              memory: "128Mi"
+#          resources:
+#            limits:
+#              cpu: "100m"
+#              memory: "128Mi"
+#            requests:
+#              cpu: "100m"
+#              memory: "128Mi"
           ports:
             - containerPort: 9113
               name: default
