@@ -39,7 +39,7 @@ metadata:
     project: roboshop
     app: frontend
 spec:
-  replicas: 1
+  replicas: 2
   selector:
     matchLabels:
       project: roboshop
@@ -60,8 +60,20 @@ spec:
               name: metrics
 
         - name: frontend
-          image: 389841108590.dkr.ecr.us-east-1.amazonaws.com/frontend:latest
+          image: 389841108590.dkr.ecr.us-east-1.amazonaws.com/frontend:{{ .Values.apiVersion }}
           imagePullPolicy: Always
+#          livenessProbe:
+#            httpGet:
+#              path: /health
+#              port: "80"
+#            failureThreshold: 1
+#            periodSeconds: 10
+#          readynessProbe:
+#            httpGet:
+#              path: /health
+#              port: "80"
+#            failureThreshold: 10
+#            periodSeconds: 10
 #          resources:
 #            limits:
 #              cpu: "100m"
