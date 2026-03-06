@@ -42,18 +42,18 @@ spec:
         - name: cart
           image: 389841108590.dkr.ecr.us-east-1.amazonaws.com/cart
           imagePullPolicy: Always
-#          livenessProbe:
-#            httpGet:
-#              path: /health
-#              port: "8080"
-#            failureThreshold: 1
-#            periodSeconds: 10
-#          readynessProbe:
-#            httpGet:
-#              path: /health
-#              port: "8080"
-#            failureThreshold: 10
-#            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: "8080"
+            failureThreshold: 1
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: "8080"
+            failureThreshold: 10
+            periodSeconds: 10
 #          resources:
 #            limits:
 #              cpu: "100m"
@@ -64,3 +64,22 @@ spec:
           envFrom:
             - configMapRef:
                 name: cart
+---
+apiVersion: autoscaling/v2
+kind: HorizontalPodAutoscaler
+metadata:
+  name: cart-hpa
+spec:
+  scaleTargetRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: cart
+  minReplicas: 2
+  maxReplicas: 10
+  metrics:
+    - type: Resource
+      resource:
+        name: cpu
+        target:
+          type: Utilization
+          averageUtilization: 60
