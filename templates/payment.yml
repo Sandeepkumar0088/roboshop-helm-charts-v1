@@ -44,7 +44,7 @@ spec:
     spec:
       containers:
         - name: payment
-          image: 389841108590.dkr.ecr.us-east-1.amazonaws.com/payment:{{ .Values.apiVersion }}
+          image: 389841108590.dkr.ecr.us-east-1.amazonaws.com/payment
           imagePullPolicy: Always
 #          livenessProbe:
 #            httpGet:
