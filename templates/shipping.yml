@@ -47,18 +47,18 @@ spec:
         - name: shipping
           image: 389841108590.dkr.ecr.us-east-1.amazonaws.com/shipping
           imagePullPolicy: Always
-#          livenessProbe:
-#            httpGet:
-#              path: /health
-#              port: 8080
-#            failureThreshold: 1
-#            periodSeconds: 10
-#          readinessProbe:
-#            httpGet:
-#              path: /health
-#              port: 8080
-#            failureThreshold: 10
-#            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            failureThreshold: 1
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 8080
+            failureThreshold: 10
+            periodSeconds: 10
 #          resources:
 #            limits:
 #              cpu: "1000m"
