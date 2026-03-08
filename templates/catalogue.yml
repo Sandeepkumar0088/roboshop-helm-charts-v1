@@ -44,7 +44,7 @@ spec:
     spec:
       containers:
         - name: catalogue
-          image: 389841108590.dkr.ecr.us-east-1.amazonaws.com/catalogue:{{ .Values.appVersion }}
+          image: 389841108590.dkr.ecr.us-east-1.amazonaws.com/catalogue
           imagePullPolicy: Always
           livenessProbe:
             httpGet:

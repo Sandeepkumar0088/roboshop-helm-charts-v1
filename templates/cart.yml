@@ -40,7 +40,7 @@ spec:
     spec:
       containers:
         - name: cart
-          image: 389841108590.dkr.ecr.us-east-1.amazonaws.com/cart:{{ .Values.appVersion }}
+          image: 389841108590.dkr.ecr.us-east-1.amazonaws.com/cart
           imagePullPolicy: Always
           livenessProbe:
             httpGet:

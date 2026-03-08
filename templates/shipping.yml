@@ -45,7 +45,7 @@ spec:
     spec:
       containers:
         - name: shipping
-          image: 389841108590.dkr.ecr.us-east-1.amazonaws.com/shipping:{{ .Values.appVersion }}
+          image: 389841108590.dkr.ecr.us-east-1.amazonaws.com/shipping
           imagePullPolicy: Always
           livenessProbe:
             httpGet:
