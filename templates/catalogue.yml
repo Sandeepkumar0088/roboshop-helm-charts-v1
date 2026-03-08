@@ -31,7 +31,7 @@ metadata:
     project: roboshop
     app: catalogue
 spec:
-  replicas: 2
+  replicas: {{ .Values.replicas.catalogue}}
   selector:
     matchLabels:
       project: roboshop
@@ -97,7 +97,7 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: catalogue
-  minReplicas: 2
+  minReplicas: {{ .Values.replicas.catalogue}}
   maxReplicas: 10
   metrics:
     - type: Resource

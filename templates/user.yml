@@ -27,7 +27,7 @@ metadata:
     project: roboshop
     app: user
 spec:
-  replicas: 2
+  replicas: {{ .Values.replicas.user}}
   selector:
     matchLabels:
       project: roboshop
@@ -74,7 +74,7 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: user
-  minReplicas: 2
+  minReplicas: {{ .Values.replicas.user}}
   maxReplicas: 10
   metrics:
     - type: Resource

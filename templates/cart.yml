@@ -27,7 +27,7 @@ metadata:
     project: roboshop
     app: cart
 spec:
-  replicas: 2
+  replicas: {{ .Values.replicas.cart}}
   selector:
     matchLabels:
       project: roboshop
@@ -74,7 +74,7 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: cart
-  minReplicas: 2
+  minReplicas: {{ .Values.replicas.cart}}
   maxReplicas: 10
   metrics:
     - type: Resource
