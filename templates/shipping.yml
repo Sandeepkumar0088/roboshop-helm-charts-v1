@@ -32,7 +32,7 @@ metadata:
     project: roboshop
     app: shipping
 spec:
-  replicas: 2
+  replicas: 5
   selector:
     matchLabels:
       project: roboshop
@@ -45,7 +45,7 @@ spec:
     spec:
       containers:
         - name: shipping
-          image: 389841108590.dkr.ecr.us-east-1.amazonaws.com/shipping
+          image: 389841108590.dkr.ecr.us-east-1.amazonaws.com/shipping:{{ .Values.appVersion }}
           imagePullPolicy: Always
           livenessProbe:
             httpGet:
