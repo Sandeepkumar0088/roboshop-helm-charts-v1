@@ -39,7 +39,7 @@ metadata:
     project: roboshop
     app: frontend
 spec:
-  replicas: {{ .Values.replicas.frontend}}
+  replicas: 2
   selector:
     matchLabels:
       project: roboshop
@@ -115,7 +115,7 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: frontend
-  minReplicas: {{ .Values.replicas.frontend}}
+  minReplicas: 2
   maxReplicas: 10
   metrics:
     - type: Resource

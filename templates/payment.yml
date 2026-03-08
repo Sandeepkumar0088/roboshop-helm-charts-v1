@@ -31,7 +31,7 @@ metadata:
     project: roboshop
     app: payment
 spec:
-  replicas: {{ .Values.replicas.payment}}
+  replicas: 2
   selector:
     matchLabels:
       project: roboshop
@@ -79,7 +79,7 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: payment
-  minReplicas: {{ .Values.replicas.payment}}
+  minReplicas: 2
   maxReplicas: 10
   metrics:
     - type: Resource

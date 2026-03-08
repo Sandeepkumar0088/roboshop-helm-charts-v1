@@ -32,7 +32,7 @@ metadata:
     project: roboshop
     app: shipping
 spec:
-  replicas: {{ .Values.replicas.shipping}}
+  replicas: 5
   selector:
     matchLabels:
       project: roboshop
@@ -96,7 +96,7 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: shipping
-  minReplicas: {{ .Values.replicas.shipping}}
+  minReplicas: 5
   maxReplicas: 10
   metrics:
     - type: Resource
