@@ -32,6 +32,11 @@ metadata:
     app: payment
 spec:
   replicas: 2
+  strategy:
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+    type: RollingUpdate
   selector:
     matchLabels:
       project: roboshop
@@ -46,6 +51,10 @@ spec:
         - name: payment
           image: 389841108590.dkr.ecr.us-east-1.amazonaws.com/payment
           imagePullPolicy: Always
+          lifecycle:
+            preStop:
+              exec:
+                command: [ "/bin/sh", "-c", "sleep 30" ]
           livenessProbe:
             httpGet:
               path: /health
