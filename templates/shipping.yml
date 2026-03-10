@@ -32,7 +32,7 @@ metadata:
     project: roboshop
     app: shipping
 spec:
-  replicas: 5
+  replicas: 2
   strategy:
     rollingUpdate:
       maxUnavailable: 0
@@ -105,7 +105,7 @@ spec:
     apiVersion: apps/v1
     kind: Deployment
     name: shipping
-  minReplicas: 5
+  minReplicas: 2
   maxReplicas: 10
   metrics:
     - type: Resource
