@@ -24,7 +24,7 @@ kind: Deployment
 metadata:
   name: cart
   labels:
-    project: roboshop
+    project: "roboshop"
     app: cart
 spec:
   replicas: 2
@@ -45,7 +45,7 @@ spec:
     spec:
       containers:
         - name: cart
-          image: 389841108590.dkr.ecr.us-east-1.amazonaws.com/cart:{{.Values.apiVersion}}
+          image: "389841108590.dkr.ecr.us-east-1.amazonaws.com/cart:{{ .Values.apiVersion }}"
           imagePullPolicy: Always
           lifecycle:
             preStop:
