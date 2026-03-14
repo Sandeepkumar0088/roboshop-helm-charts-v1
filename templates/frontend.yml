@@ -65,7 +65,7 @@ spec:
               name: metrics
 
         - name: frontend
-          image: "389841108590.dkr.ecr.us-east-1.amazonaws.com/frontend:{{ .Values.apiVersion }}"
+          image: 389841108590.dkr.ecr.us-east-1.amazonaws.com/frontend
           imagePullPolicy: Always
 #          lifecycle:
 #            preStop:
