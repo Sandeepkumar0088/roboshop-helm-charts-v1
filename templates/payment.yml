@@ -67,13 +67,13 @@ spec:
               port: 8080
             failureThreshold: 10
             periodSeconds: 10
-#          resources:
-#            limits:
-#              cpu: "200m"
-#              memory: "512Mi"
-#            requests:
-#              cpu: "200m"
-#              memory: "512Mi"
+          resources:
+            limits:
+              cpu: "200m"
+              memory: "512Mi"
+            requests:
+              cpu: "400m"
+              memory: "1024Mi"
 
           envFrom:
             - configMapRef:
@@ -96,4 +96,4 @@ spec:
         name: cpu
         target:
           type: Utilization
-          averageUtilization: 60
+          averageUtilization: 50
