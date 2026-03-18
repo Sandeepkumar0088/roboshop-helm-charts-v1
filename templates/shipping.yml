@@ -68,13 +68,13 @@ spec:
               port: 8080
             failureThreshold: 10
             periodSeconds: 10
-#          resources:
-#            limits:
-#              cpu: "1500m"
-#              memory: "2048Mi"
-#            requests:
-#              cpu: "1500m"
-#              memory: "2048Mi"
+          resources:
+            limits:
+              cpu: "1000m"
+              memory: "1500Mi"
+            requests:
+              cpu: "1000m"
+              memory: "1500Mi"
           envFrom:
             - configMapRef:
                 name: shipping
