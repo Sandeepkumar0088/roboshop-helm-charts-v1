@@ -69,11 +69,11 @@ spec:
             periodSeconds: 10
           resources:
             limits:
-              cpu: "200m"
-              memory: "512Mi"
+              cpu: "100m"
+              memory: "128Mi"
             requests:
-              cpu: "200m"
-              memory: "512Mi"
+              cpu: "100m"
+              memory: "128Mi"
 
           envFrom:
             - configMapRef:
