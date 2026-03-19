@@ -32,7 +32,7 @@ metadata:
     project: roboshop
     app: shipping
 spec:
-  replicas: 3
+  replicas: 5
 #  strategy:
 #    rollingUpdate:
 #      maxUnavailable: 0
