@@ -83,13 +83,13 @@ spec:
               port: 80
             failureThreshold: 10
             periodSeconds: 10
-#          resources:
-#            limits:
-#              cpu: "100m"
-#              memory: "128Mi"
-#            requests:
-#              cpu: "100m"
-#              memory: "128Mi"
+          resources:
+            limits:
+              cpu: "100m"
+              memory: "128Mi"
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
           ports:
             - containerPort: 9113
               name: default
