@@ -70,11 +70,11 @@ spec:
             periodSeconds: 10
           resources:
             limits:
-              cpu: "1000m"
-              memory: "1024Mi"
+              cpu: "600m"
+              memory: "600Mi"
             requests:
-              cpu: "1000m"
-              memory: "1024Mi"
+              cpu: "600m"
+              memory: "6000Mi"
           envFrom:
             - configMapRef:
                 name: shipping
