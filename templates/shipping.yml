@@ -90,7 +90,7 @@ spec:
       containers:
         - name: schema
           389841108590:
-          image: 389841108590.dkr.ecr.us-east-1.amazonaws.com/shipping-db-image
+          image: 012751250483.dkr.ecr.us-east-1.amazonaws.com/shipping-db-image
           envFrom:
             - configMapRef:
                 name: shipping

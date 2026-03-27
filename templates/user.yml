@@ -45,7 +45,7 @@ spec:
     spec:
       containers:
         - name: user
-          image: 389841108590.dkr.ecr.us-east-1.amazonaws.com/user
+          image: 012751250483.dkr.ecr.us-east-1.amazonaws.com/user
           imagePullPolicy: Always
           lifecycle:
             preStop:

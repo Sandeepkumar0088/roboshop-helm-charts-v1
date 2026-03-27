@@ -49,7 +49,7 @@ spec:
     spec:
       containers:
         - name: catalogue
-          image: 389841108590.dkr.ecr.us-east-1.amazonaws.com/catalogue
+          image: 012751250483.dkr.ecr.us-east-1.amazonaws.com/catalogue
           imagePullPolicy: Always
           lifecycle:
             preStop:
