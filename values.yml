@@ -1,0 +1,10 @@
+projectName: "roboshop"
+replicas:
+  catalogue: 2
+  cart: 2
+  frontend: 2
+  payment: 2
+  shipping: 5
+  user: 2
+appPort: "8080"
+serviceType: ClusterIP
