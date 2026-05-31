@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: configMap
+metadata:
+  name: game-demo-5
+  labels:
+    project: sample
+    app: demo
+data: |
+  {{  (.Files.Glob  "files/sample.conf")AsConfig  | indent 2  }}
+
+---
+
+apiVersion: v1
+kind: configMap
+metadata:
+  name: game-demo-6
+    {{- template "mychart.labels" }}
+data: |
+  {{  (.Files.Glob  "files/sample.conf")AsConfig  | indent 2  }}
+  
+
+# git pull ; helm upgrade -i sample . --debug --dry-run . --set cm3.enabled=true

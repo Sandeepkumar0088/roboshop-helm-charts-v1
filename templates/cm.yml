@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: configMap
+metadata:
+  name: game-demo
+data:
+  lives: "3"
+  name: "sandeep"
+  score: {{  .Values.game_score  }}
+  Release.Name: {{  Release.Name  }}
+  Release.Service: {{  .Release.Service  }}
+  chart: {{  .Chart.Name  }}-{{ .Chart.Version  }}
+  template_name: {{  .Template.Name  }}
+  files: |
+    {{  .Files.Get  "sample.conf" | indent 4  }}
+
+
+# helm upgrade -i sample .
+# kubectl get cm game-demo -o yaml
+# helm upgrade -i sample --debug --dry-run .
+# https://helm.sh/docs/chart_template_guide/builtin_objects
