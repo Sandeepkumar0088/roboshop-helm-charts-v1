@@ -4,10 +4,10 @@ metadata:
   name: catalogue
 data:
   MONGO       : "true"
-  MONGO_URL   : "mongodb://mongodb-dev.sandeepkumar0088.online:27017/catalogue"
+  MONGO_URL   : "mongodb://mongodb-dev.sandeepkumar5427.online:27017/catalogue"
   DB_TYPE     : "mongo"
   APP_GIT_URL : "https://github.com/roboshop-devops-project-v3/catalogue"
-  DB_HOST     : "mongodb-dev.sandeepkumar0088.online"
+  DB_HOST     : "mongodb-dev.sandeepkumar5427.online"
   SCHEMA_FILE : "db/master-data.js"
 ---
 apiVersion: v1

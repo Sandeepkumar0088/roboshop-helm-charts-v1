@@ -4,8 +4,8 @@ metadata:
   name: user
 data:
   MONGO     : "true"
-  REDIS_URL : "redis://redis-dev.sandeepkumar0088.online:6379"
-  MONGO_URL : "mongodb://mongodb-dev.sandeepkumar0088.online:27017/users"
+  REDIS_URL : "redis://redis-dev.sandeepkumar5427.online:6379"
+  MONGO_URL : "mongodb://mongodb-dev.sandeepkumar5427.online:27017/users"
 ---
 apiVersion: v1
 kind: Service

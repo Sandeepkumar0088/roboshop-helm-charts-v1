@@ -4,9 +4,9 @@ metadata:
   name: shipping
 data:
   CART_ENDPOINT : "cart:8080"
-  DB_HOST       : "mysql-dev.sandeepkumar0088.online"
-  MYSQL_HOST    : "mysql-dev.sandeepkumar0088.online"
-  REDIS_HOST    : "redis-dev.sandeepkumar0088.online"
+  DB_HOST       : "mysql-dev.sandeepkumar5427.online"
+  MYSQL_HOST    : "mysql-dev.sandeepkumar5427.online"
+  REDIS_HOST    : "redis-dev.sandeepkumar5427.online"
   DB_USER       : "root"
   DB_PASS       : "RoboShop@1"
   DB_TYPE       : "mysql"

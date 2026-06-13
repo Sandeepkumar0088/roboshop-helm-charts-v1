@@ -7,7 +7,7 @@ data:
   CART_PORT: "8080"
   USER_HOST: "user"
   USER_PORT: "8080"
-  AMQP_HOST: "rabbitmq-dev.sandeepkumar0088.online"
+  AMQP_HOST: "rabbitmq-dev.sandeepkumar5427.online"
   AMQP_USER: "roboshop"
   AMQP_PASS: "roboshop123"
 ---

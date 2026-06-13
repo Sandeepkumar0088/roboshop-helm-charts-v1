@@ -3,7 +3,7 @@ kind: ConfigMap
 metadata:
   name: cart
 data:
-  REDIS_HOST     : "redis-dev.sandeepkumar0088.online"
+  REDIS_HOST     : "redis-dev.sandeepkumar5427.online"
   CATALOGUE_HOST : "catalogue"
   CATALOGUE_PORT : "8080"
 ---
