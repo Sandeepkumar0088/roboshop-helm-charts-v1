@@ -56,18 +56,35 @@ spec:
             preStop:
               exec:
                 command: [ "/bin/sh", "-c", "sleep 30" ]
+#          livenessProbe:
+#            httpGet:
+#              path: /health
+#              port: 8080
+#            failureThreshold: 1
+#            periodSeconds: 10
+#          readinessProbe:
+#            httpGet:
+#              path: /health
+#              port: 8080
+#            failureThreshold: 10
+#            periodSeconds: 10
           livenessProbe:
             httpGet:
               path: /health
               port: 8080
-            failureThreshold: 1
+            initialDelaySeconds: 30
             periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 3
+
           readinessProbe:
             httpGet:
               path: /health
               port: 8080
-            failureThreshold: 10
+            initialDelaySeconds: 15
             periodSeconds: 10
+            timeoutSeconds: 5
+            failureThreshold: 10
           resources:
             limits:
               cpu: "1000m"
